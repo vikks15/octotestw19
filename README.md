@@ -8,6 +8,10 @@
 
 `npm test`
 
+## Allure-репорт
+
+`npm run report`
+
 ## FAQ
 *1. Где взять ящик для тестов?*
 
