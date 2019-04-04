@@ -17,6 +17,19 @@ export default class DefaultPage {
 		return browser;
 	}
 
+	switchTab() {
+		let openedTabs = browser.getTabIds();
+		browser.switchTab(openedTabs[1]);
+		return browser;
+	}
+
+	checkTabName(expectedTabName) {
+        let actualTabName = browser.getTitle();
+        if (actualTabName != expectedTabName) {
+            throw new Error('Incorrect tab name');
+        }
+    }
+
 	redirectToQa() {
 		browser.url('/bundles/page.qa.html')
 	}
