@@ -6,15 +6,15 @@ class LettersPage extends DefaultPage {
 	}
 
 	get locators () {
-		const container = '[data-qa-id="dataset-letters"]';
+		const container = '.dataset-letters';
+		const items = container + ' .dataset__items';
+		const subj = items + ' .llct__subject';
 
 		return {
 			container,
-			letterBySubject: (subject) => {
-				// subject = subject === '' ? '<Без темы>' : subject.replace('"', '\\"');
-
-				return `${this.locators.container} [data-qa-id="letter-item:subject:${subject}"]`;
-			}
+			items,
+			subj,
+			letterBySubject: (subject) => subj + `[title="${subject}"]`
 		}
 	}
 

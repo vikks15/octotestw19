@@ -77,8 +77,7 @@ export default class DefaultPage {
 			attribute = browser.getAttribute(selector, 'class');
 		} else if (selector) {
 			// получение из контекста, для chained вызова element.hasClass()
-			attribute = browser.elementIdAttribute(this.lastResult.ELEMENT, 'class').value;
-
+			attribute = browser.elementIdAttribute(this.lastResult.ELEMENT, 'class').value;			
 			name = selector;
 		}
 
@@ -86,8 +85,7 @@ export default class DefaultPage {
 			throw new Error('Element not found');
 		}
 
-		const actual = attribute.split(' ');
-
+		const actual =  String(attribute);
 		return actual.includes(name);
 	}
 

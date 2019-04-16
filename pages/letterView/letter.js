@@ -6,11 +6,11 @@ class LetterView extends DefaultPage {
     }
 
     get locators() {
-        const container = '[data-qa-id="letter-content"]';
+        const container = '[class*="letter-content"]';
 
         return {
             container,
-            attachBlock: container + ` [data-qa-id="attach-list"]`
+            attachBlock: container + ` [class*="attach-list"]`
         }
     }
 

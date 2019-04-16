@@ -6,20 +6,18 @@ class Layout extends DefaultPage {
 	}
 
 	get locators() {
-		const container = '[data-qa-id="application"]';
-		const sideBar = container + ' [data-qa-id="main"] [data-qa-id="sidebar"]';
-		const dropDown = sideBar + ' [data-qa-id="dropdown-settings"]';
-		const dropDownButton = dropDown + ' [data-qa-id="dropdown-button"]';
-		const dropDownList = dropDown + ' [data-qa-id="dropdown-list"]';
-		const layoutSwitch = dropDownList + ' [data-qa-id="layout-toggle"]';
-		const paneCheckbox = layoutSwitch + ' .b-checkbox';
+		const container = '.application';
+		const sideBar = container + ' [class^="sidebar"]';
+		const dropDown = sideBar + ' [class^="settings"]';
+		const dropDownButton = dropDown + ' [class^="button"]';
+		const dropDownList = dropDown + ' [class^="list"]';
+		const paneCheckbox = dropDownList + ' .b-checkbox';
 		return {
 			container,
 			sideBar,
 			dropDown,
 			dropDownButton,
 			dropDownList,
-			layoutSwitch,
 			paneCheckbox
 		}
 	}
