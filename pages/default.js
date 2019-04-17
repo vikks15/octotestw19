@@ -28,6 +28,15 @@ export default class DefaultPage {
         if (actualTabName != expectedTabName) {
             throw new Error('Incorrect tab name');
         }
+	}
+	
+	checkDownload() {        
+        try {
+			this.page.getAttribute('iframe', 'src');
+			return true;
+		} catch (err) {
+			throw new Error('File has not been downloaded');
+		}
     }
 
 	redirectToQa() {

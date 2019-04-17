@@ -27,6 +27,15 @@ class AttachSteps extends DefaultSteps {
         this.page.clickTitle();
         this.page.switchToTab(2);
     }
+
+    clickDownloadButton() {
+        this.page.hasViewer();
+        this.page.clickDownloadBtn();
+    }
+
+    checkDownload() {
+        this.page.checkDownload();
+    }
 }
 
 export default new AttachSteps();

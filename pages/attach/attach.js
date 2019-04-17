@@ -19,6 +19,7 @@ class AttachPage extends DefaultPage {
             fileName: toolbar + ' .b-filename__name',
             fileExtension: toolbar + ' .b-filename__extension',
             title: container + ' [class*="viewport"] [href*="message"]',
+            downloadBtn: toolbar + ' [data-name="download"]',
         }
     }
 
@@ -41,6 +42,10 @@ class AttachPage extends DefaultPage {
 
     clickTitle() {
         this.page.click(this.locators.title);
+    }
+
+    clickDownloadBtn() {
+        this.page.click(this.locators.downloadBtn);
     }
 
     checkFileName(expectedFileName, expectedExtension) {
