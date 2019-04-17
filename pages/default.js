@@ -85,7 +85,8 @@ export default class DefaultPage {
 			throw new Error('Element not found');
 		}
 
-		const actual =  String(attribute);
+		const actual = attribute.split(' ');
+
 		return actual.includes(name);
 	}
 

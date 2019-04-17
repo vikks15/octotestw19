@@ -10,14 +10,17 @@ class Layout extends DefaultPage {
 		const sideBar = container + ' [class^="sidebar"]';
 		const dropDown = sideBar + ' [class^="settings"]';
 		const dropDownButton = dropDown + ' [class^="button"]';
-		const dropDownList = dropDown + ' [class^="list"]';
-		const paneCheckbox = dropDownList + ' .b-checkbox';
+		const dropDownList = dropDown + ' [class*="list_hover"]';
+		const layoutSwitch = dropDownList + ' :nth-child(3)';
+		const paneCheckbox = layoutSwitch + ' .b-checkbox';
+		
 		return {
 			container,
 			sideBar,
 			dropDown,
 			dropDownButton,
 			dropDownList,
+			layoutSwitch,
 			paneCheckbox
 		}
 	}
@@ -32,7 +35,7 @@ class Layout extends DefaultPage {
 		this.toggleDropdownButton();
 		this.page.waitForVisible(this.locators.dropDownList);
 		
-		const is3pane = this.hasClass(this.locators.paneCheckbox, 'b-checkbox_checked')
+		const is3pane = this.hasClass(this.locators.paneCheckbox, 'b-checkbox_checked');
 
 		switch (pane) {
 			case 2:

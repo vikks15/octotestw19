@@ -6,8 +6,8 @@ class FoldersSteps extends DefaultSteps {
 		super(page);
 	}
 
-	clickFolderByName(folderName) {
-		this.page.clickFolderByName(folderName);
+	clickFolderByNum(folderNum) {
+		this.page.clickFolderByNum(folderNum);
 	}
 
 }

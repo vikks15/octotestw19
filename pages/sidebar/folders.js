@@ -11,16 +11,16 @@ class FoldersPage extends DefaultPage {
 		return {
 			container,
 			navFolder,
-			folderByName: (folderName) => navFolder + ` [class^="nav__item"][title="${folderName}"]`
+			folderByNum: (folderNum) => navFolder + ` [class*="nav_hover-support"] :nth-child(${folderNum})`
 		}
 	}
 
 	/**
-	 * Клик по любой папке, если сайдбар не узкий
+	 * Клик по любой папке по ее номеру в списке
 	 * @param {string} folderName
 	 */
-	clickFolderByName(folderName) {
-		const locator = this.locators.folderByName(folderName);
+	clickFolderByNum(folderNum) {
+		const locator = this.locators.folderByNum(folderNum);
 		this.page.waitForVisible(locator);
 		this.page.click(locator);
 	}
