@@ -6,21 +6,25 @@ class AttachPage extends DefaultPage {
     }
 
     get locators() {
-        const container = '[class="b-viewer"]';
+        const container = '.b-viewer';
+        const slider = container + ' [class^="b-slider"]';        
+        const toolbar = container + ' [class*="b-toolbar"]';
 
         return {
             container,
-            fileName: '.b-filename__name',
-            fileExtension: '.b-filename__extension',
-            attachView: '[class*="b-view__image "]',
-            forwardArrow: '[class*="arrow_forward"]',
-            backArrow: '[class*="arrow_back"]',
+            toolbar,
+            slider,
+            forwardArrow: slider + ' [class*="arrow_forward"]',
+            backArrow: slider + ' [class*="arrow_back"]',
+            fileName: toolbar + ' .b-filename__name',
+            fileExtension: toolbar + ' .b-filename__extension',
+            title: container + ' [class*="viewport"] [href*="message"]',
         }
     }
 
     hasViewer (reverse = false) {
 		try {
-			this.page.waitForVisible(this.locators.attachView, null, reverse);
+			this.page.waitForVisible(this.locators.slider, null, reverse);
 			return true;
 		} catch (err) {
 			return false;
@@ -35,9 +39,13 @@ class AttachPage extends DefaultPage {
         this.page.click(this.locators.backArrow);     
     }
 
+    clickTitle() {
+        this.page.click(this.locators.title);
+    }
+
     checkFileName(expectedFileName, expectedExtension) {
-        let fName = this.page.getText(this.locators.fileName);
-        let fExtension = this.page.getText(this.locators.fileExtension);
+        const fName = this.page.getText(this.locators.fileName);
+        const fExtension = this.page.getText(this.locators.fileExtension);
 
         if (fName != expectedFileName || fExtension != expectedExtension) {
             throw new Error('Incorrect attach file name');

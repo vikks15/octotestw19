@@ -17,9 +17,9 @@ export default class DefaultPage {
 		return browser;
 	}
 
-	switchTab() {
+	switchToTab(num) {
 		let openedTabs = browser.getTabIds();
-		browser.switchTab(openedTabs[1]);
+		browser.switchTab(openedTabs[num]);
 		return browser;
 	}
 

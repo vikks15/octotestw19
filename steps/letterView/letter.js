@@ -9,7 +9,12 @@ class LetterViewSteps extends DefaultSteps {
 	openAttachViewer() {
         this.page.hasAttach();
 		this.page.openAttach();
-		this.page.switchTab();
+		this.page.switchToTab(1);
+	}
+
+	checkSubject(expected) {
+		this.page.hasLetterContent();
+		this.page.checkSubject(expected);
 	}
 }
 

@@ -21,6 +21,12 @@ class AttachSteps extends DefaultSteps {
         this.page.checkFileName(fileName, fileExtension);
         this.page.checkTabName(tabName);
     }
+
+    clickTitle() {
+        this.page.hasViewer();
+        this.page.clickTitle();
+        this.page.switchToTab(2);
+    }
 }
 
 export default new AttachSteps();
