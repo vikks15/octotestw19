@@ -6,7 +6,7 @@
   "scripts": {
     "test": "wdio --baseUrl='https://octavius.mail.ru'",
     "report": "mkdir -p ./cache/allure-report && allure generate -c -o ./cache/allure-report ./cache/allure-results && allure open ./cache/allure-report",
-    "one": "wdio --baseUrl='https://octavius.mail.ru' wdio.conf --spec ./cases/attach/download_button.js"
+    "one": "wdio --baseUrl='https://octavius.mail.ru' wdio.conf --spec ./cases/attach/save_to_cloud.js"
   },
   "author": "",
   "license": "ISC",

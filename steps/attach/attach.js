@@ -36,6 +36,15 @@ class AttachSteps extends DefaultSteps {
     checkDownload() {
         this.page.checkDownload();
     }
+
+    clickSaveToCloudBtn() {
+        this.page.hasViewer();
+        this.page.saveToCloud();
+    }
+
+    checkSaveToCloudWindow() {
+        this.page.hasSaveToCloudWindow();
+    }
 }
 
 export default new AttachSteps();

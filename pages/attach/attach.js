@@ -9,17 +9,21 @@ class AttachPage extends DefaultPage {
         const container = '.b-viewer';
         const slider = container + ' [class^="b-slider"]';        
         const toolbar = container + ' [class*="b-toolbar"]';
+        const layerExplorerToCloud = '.layer-explorer-to-cloud';
 
         return {
             container,
             toolbar,
             slider,
+            layerExplorerToCloud,
             forwardArrow: slider + ' [class*="arrow_forward"]',
             backArrow: slider + ' [class*="arrow_back"]',
             fileName: toolbar + ' .b-filename__name',
             fileExtension: toolbar + ' .b-filename__extension',
             title: container + ' [class*="viewport"] [href*="message"]',
             downloadBtn: toolbar + ' [data-name="download"]',
+            saveToCloudBtn: toolbar + ' [data-name="saveToCloud"]',
+
         }
     }
 
@@ -46,6 +50,19 @@ class AttachPage extends DefaultPage {
 
     clickDownloadBtn() {
         this.page.click(this.locators.downloadBtn);
+    }
+
+    saveToCloud() {
+        this.page.click(this.locators.saveToCloudBtn);
+    }
+    
+    hasSaveToCloudWindow() {
+        try {
+            this.page.getTagName(this.locators.layerExplorerToCloud);
+			return true;
+		} catch (err) {
+			throw new Error('No save to cloud window');
+		}
     }
 
     checkFileName(expectedFileName, expectedExtension) {
