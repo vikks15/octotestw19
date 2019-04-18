@@ -45,6 +45,15 @@ class AttachSteps extends DefaultSteps {
     checkSaveToCloudWindow() {
         this.page.hasSaveToCloudWindow();
     }
+
+    clickEditBtn() {
+        this.page.hasViewer();
+        this.page.clickEditBtn();
+    }
+
+    checkEditWindow() {
+        this.page.hasEditWindow();
+    }
 }
 
 export default new AttachSteps();

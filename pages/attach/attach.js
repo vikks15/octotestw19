@@ -10,12 +10,14 @@ class AttachPage extends DefaultPage {
         const slider = container + ' [class^="b-slider"]';        
         const toolbar = container + ' [class*="b-toolbar"]';
         const layerExplorerToCloud = '.layer-explorer-to-cloud';
+        const editWindow = '[data-ply=":layer"]';
 
         return {
             container,
             toolbar,
             slider,
             layerExplorerToCloud,
+            editWindow,
             forwardArrow: slider + ' [class*="arrow_forward"]',
             backArrow: slider + ' [class*="arrow_back"]',
             fileName: toolbar + ' .b-filename__name',
@@ -23,11 +25,11 @@ class AttachPage extends DefaultPage {
             title: container + ' [class*="viewport"] [href*="message"]',
             downloadBtn: toolbar + ' [data-name="download"]',
             saveToCloudBtn: toolbar + ' [data-name="saveToCloud"]',
-
+            editBtn: toolbar + ' [data-name="edit"]',
         }
     }
 
-    hasViewer (reverse = false) {
+    hasViewer(reverse = false) {
 		try {
 			this.page.waitForVisible(this.locators.slider, null, reverse);
 			return true;
@@ -55,14 +57,27 @@ class AttachPage extends DefaultPage {
     saveToCloud() {
         this.page.click(this.locators.saveToCloudBtn);
     }
-    
-    hasSaveToCloudWindow() {
+
+    clickEditBtn() {
+        this.page.click(this.locators.editBtn);
+    }
+
+    hasEditWindow(reverse = false) {
         try {
-            this.page.getTagName(this.locators.layerExplorerToCloud);
+            this.page.waitForVisible(this.locators.editWindow, null, reverse);
 			return true;
 		} catch (err) {
-			throw new Error('No save to cloud window');
+			throw new Error('No edit window');
 		}
+    }
+    
+    hasSaveToCloudWindow(reverse = false) {
+        try {
+            this.page.waitForVisible(this.locators.layerExplorerToCloud, null, reverse);
+			return true;
+		} catch (err) {
+            throw new Error('No save to cloud window');
+        }
     }
 
     checkFileName(expectedFileName, expectedExtension) {

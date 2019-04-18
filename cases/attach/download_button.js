@@ -5,7 +5,7 @@ import folders from '../../steps/sidebar/folders';
 import letter from '../../steps/letterView/letter';
 import attach from '../../steps/attach/attach';
 
-describe('test 4', () => {
+describe('test 2', () => {
 	it('Скачивание аттача при нажатии на кнопку скачать', () => {
 		main.open('https://mail.ru');
 		main.login(process.env.QALOGIN, process.env.QAPASS);
